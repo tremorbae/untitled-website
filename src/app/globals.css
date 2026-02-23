@@ -1,0 +1,388 @@
+@import "tailwindcss";
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #ff7fdf;
+}
+
+body {
+  font-family: var(--font-pixel), "Press Start 2P", monospace;
+  background-color: #ff7fdf;
+  background-image: url('/websitebackground.png');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Reduce paint on scroll */
+.window {
+  will-change: transform;
+  contain: layout style paint;
+}
+
+/* Optimize font loading */
+@font-face {
+  font-family: 'W95FA';
+  src: url('/fonts/w95fa.woff2') format('woff2'),
+       url('/fonts/w95fa.woff') format('woff'),
+       url('/fonts/W95FA.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  unicode-range: U+000-5FF;
+}
+
+/* Preload critical font */
+@font-face {
+  font-family: 'W95FA';
+  src: url('/fonts/w95fa.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+/* Fallback font system */
+@font-face {
+  font-family: 'W95FA-Fallback';
+  src: local('Courier New'), local('monospace');
+  font-weight: 400;
+  font-style: normal;
+  ascent-override: 90%;
+  descent-override: 30%;
+  line-gap-override: 120%;
+}
+
+:root {
+  --font-pixel: "W95FA", "Courier New", monospace, system-ui;
+}
+
+/* ========================================
+   WINDOW & LAYOUT COMPONENTS
+   ======================================== */
+
+/* Retro Window Chrome */
+.window {
+  border: 2px solid #a0a0a0;
+  border-top-color: #dfdfdf;
+  border-left-color: #dfdfdf;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  background: #c0c0c0;
+  box-shadow: 
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #808080,
+    3px 3px 12px rgba(0, 0, 0, 0.5);
+}
+
+.titlebar {
+  background: #ff7fdf;
+  color: #ffffff;
+  padding: 5px 7px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  letter-spacing: 0px;
+}
+
+.titlebar-buttons {
+  display: flex;
+  gap: 2px;
+}
+
+.titlebar-btn {
+  width: 18px;
+  height: 18px;
+  background: #c0c0c0;
+  border: 1px solid #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.titlebar-btn:active {
+  border-color: #404040;
+  border-right-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.body {
+  padding: 8px;
+  background: #c0c0c0;
+}
+
+/* Inset panel (like messenger message area) */
+.inset {
+  border: 2px solid #808080;
+  border-right-color: #dfdfdf;
+  border-bottom-color: #dfdfdf;
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Video window styling */
+.video-window {
+  flex: 1.5;
+}
+
+/* ========================================
+   MAIN TITLE & SUBTITLE
+   ======================================== */
+
+/* Main title styling */
+.main-title {
+  color: #000000;
+  font-size: 30px;
+}
+
+/* Subtitle styling */
+.subtitle {
+  font-size: 20px;
+  color: #000000;
+  margin-top: 0.25rem;
+}
+
+/* ========================================
+   ABOUT SECTION
+   ======================================== */
+
+/* Green arrow styling */
+.green-arrow {
+  font-size: 14px;
+  color: #000000;
+}
+
+/* Section header styling */
+.section-header {
+  color: #000000;
+  font-size: 16px;
+}
+
+/* About text styling */
+.about-text {
+  padding-left: .7rem;
+  font-size: 16px;
+}
+
+/* ========================================
+   PROJECT DETAILS SECTION
+   ======================================== */
+
+/* Project detail label styling */
+.detail-label {
+  color: #000000;
+  font-size: 16px;
+  padding-left: 0;
+}
+
+/* Project detail value styling */
+.detail-value {
+  font-size: 16px;
+  color: #000000;
+  padding-left: 0.7rem;
+}
+
+/* Project details grid styling */
+.project-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  font-size: 16px;
+  padding-left: 0;
+}
+
+/* ========================================
+   LAUNCHPAD SECTION
+   ======================================== */
+
+/* Launchpad link styling */
+.launchpad-link {
+  color: #0000ff;
+  padding-left: .7rem;
+  text-decoration: none;
+  font-size:16px;
+}
+
+.launchpad-link:hover {
+  color: #ff0000;
+}
+
+/* ========================================
+   MINT PHASES SECTION
+   ======================================== */
+
+/* Phase name styling */
+.phase-name {
+  font-size: 16px;
+  color: #000000;
+}
+
+/* Phase description styling */
+.phase-description {
+  color: #000000;
+  font-size: 16px;
+}
+
+/* Phase item container */
+.phase-item-container {
+  align-items: flex-start;
+}
+
+/* Phase bullet point alignment */
+.phase-bullet {
+  position: relative;
+  top: 8px;
+}
+
+/* Phases container styling */
+.phases-container {
+  padding-left: .7rem;
+}
+
+/* Video fallback styling */
+.video-fallback {
+  text-align: center;
+  color: #808080;
+  font-size: 10px;
+}
+
+.video-fallback .text-3xl {
+  font-size: 24px;
+  margin-bottom: 0.5rem;
+}
+
+.video-fallback .text-8px {
+  font-size: 8px;
+}
+
+/* Success username styling */
+.success-username {
+  color: #000000;
+}
+
+/* ========================================
+   WHITELIST FORM SECTION
+   ======================================== */
+
+/* Outset button */
+.button {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #000000;
+  text-transform: lowercase;
+  user-select: none;
+  letter-spacing: 0px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.button:hover {
+  background: #d4d4d4;
+}
+
+.button:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+  padding: 9px 15px 7px 17px;
+}
+
+/* Input fields */
+.input {
+  border: 2px solid #808080;
+  border-right-color: #dfdfdf;
+  border-bottom-color: #dfdfdf;
+  background: #ffffff;
+  color: #000000;
+  padding: 4px 6px;
+  font-family: var(--font-pixel);
+  font-size: 16px;
+  outline: none;
+}
+
+.input:focus {
+  outline: 1px dotted #000080;
+  outline-offset: -1px;
+}
+
+.input::placeholder {
+  color: #808080;
+}
+
+/* Form label styling */
+.form-label {
+  display: block;
+  font-size:16px;
+  color: #000000;
+  margin-bottom: 0.125rem;
+}
+
+/* Form description styling */
+.form-description {
+  font-size: 16px;
+  color: #000000;
+}
+
+/* Error text styling */
+.error-text {
+  color: #ff0000;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Success message styling */
+.success-title {
+  color: #000000;
+}
+
+/* ========================================
+   FOOTER SECTION
+   ======================================== */
+
+/* Footer styling */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 16px;
+  color: #000;
+  width: 100%;
+}
+
+/* ========================================
+   MODAL OVERLAY
+   ======================================== */
+
+/* Modal overlay - ensures modals are fixed to viewport */
+.modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
